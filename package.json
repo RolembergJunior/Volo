@@ -9,19 +9,27 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
+    "apexcharts": "^3.43.0",
+    "dotenv": "^16.3.1",
+    "framer-motion": "^10.16.4",
+    "fs": "^0.0.1-security",
+    "motion": "^10.16.4",
+    "next": "latest",
+    "nodemailer": "^6.9.6",
     "react": "latest",
-    "react-dom": "latest",
-    "next": "latest"
+    "react-apexcharts": "^1.4.1",
+    "react-dom": "latest"
   },
   "devDependencies": {
-    "typescript": "latest",
-    "@types/react": "latest",
     "@types/node": "latest",
+    "@types/react": "latest",
     "@types/react-dom": "latest",
     "autoprefixer": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
     "postcss": "latest",
     "tailwindcss": "latest",
-    "eslint": "latest",
-    "eslint-config-next": "latest"
+    "typescript": "latest"
   }
 }

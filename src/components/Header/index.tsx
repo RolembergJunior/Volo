@@ -2,17 +2,29 @@
 
 import { motion } from "framer-motion";
 import ActiveLink from "../ActiveLink/ActiveLink";
-import { useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import ModalContact from "./components/ModalContact";
+import { useEmailContext } from "@/app/context/Emails-context";
+import { GET } from "@/app/api/send/route";
 
 
 
 export default function Header() {
     const [openModal , setOpenModal] = useState<Boolean>(false);
-    const [handleChange, setHandleChange] = useState<String>('');
+    const { setEmail, setText, setEmailAndTextOnState } = useEmailContext();
     
-    function contactChange(e){
-        setHandleChange(e.target.value)
+    function handleEmail(email:ChangeEvent<HTMLInputElement>){
+        setEmail(email.target.value)
+    }
+
+    function handleText(text:ChangeEvent<HTMLInputElement>){
+        setText(text.target.value)
+    }
+
+    function sendEmail(){
+        setEmailAndTextOnState()
+
+        // GET()
     }
 
     return(
@@ -49,12 +61,12 @@ export default function Header() {
                     <ModalContact openModal={openModal} >
                         <div className="w-128 h-96 top-0 left-[450px] bg-black-rgba fixed z-30 cursor-default">
                             <div className="flex flex-col gap-10 bg-slate-50 p-8 rounded-xl max-w-75 h-128 relative mt-14">
-                            <p className="text-black text-end cursor-pointer" onClick={() => setOpenModal(false )}>FECHAR!</p>
+                            <p className="text-black text-end cursor-pointer" onClick={() => setOpenModal(false)}>FECHAR!</p>
                             <h1 className="text-black text-center font-bold text-xl ">CONTATO VOLO</h1>
                             <hr className="border-2" />
-                            <input type="email" placeholder="E-mail" className=" text-black w-128 h-14 rounded-md" onChange={(e) => contactChange(e)}/>
-                            <input type="text" placeholder="Descrição" className=" text-black w-[900px] h-[400px] rounded-md" onChange={(e) => contactChange(e)}/>
-                            <button type="submit" className="bg-sky-500 h-10 rounded-lg" >ENVIAR</button> 
+                            <input type="email" placeholder="E-mail" className=" text-black w-128 h-14 rounded-md" onChange={(email) => handleEmail(email)}/>
+                            <input type="text" placeholder="Descrição" className=" text-black w-[900px] h-[400px] rounded-md" onChange={(text) => handleText(text)}/>
+                            <button type="submit" className="bg-sky-500 h-10 rounded-lg" onClick={() => sendEmail()}>ENVIAR</button> 
                             </div>
                         </div> 
                     </ModalContact>
@@ -63,14 +75,3 @@ export default function Header() {
         </header>
     )
 }
-
-// {/* <div className="w-128 h-200 top-0 left-[450px] bg-black-rgba fixed z-30 cursor-default">
-//                                 <div className="flex flex-col gap-10 bg-slate-50 p-8 rounded-xl max-w-75 h-128 relative mt-14">
-//                                     <p className="text-black text-end cursor-pointer" onClick={() => closeModal()}>FECHAR!</p>
-//                                     <h1 className="text-black font-bold text-xl ">CONTATO VOLO</h1>
-//                                     <hr className="border-2" />
-//                                     <input type="email" placeholder="E-mail" className=" text-black w-128 h-14 rounded-md" onChange={(e) => contactChange(e)}/>
-//                                     <input type="text" placeholder="Descrição" className=" text-black w-[900px] h-[450px] rounded-md" onChange={(e) => contactChange(e)}/>
-//                                     {/* <button type="submit" className="bg-sky-500 h-10 rounded-lg" >ENVIAR</button> */}
-//                             //     </div>
-//                             // </div> */}

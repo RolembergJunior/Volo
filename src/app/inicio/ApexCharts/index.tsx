@@ -4,10 +4,6 @@ import { useState, useEffect } from "react";
 import Chart from "react-apexcharts";
 import { AsteroidsType, Datatype } from "../types";
 
-interface Props{ 
-  data: AsteroidsType[]
-}
-
 const options = {
   xaxis: {
     categories: ["kilometers_per_second","kilometers_per_hour","miles_per_hour"]
@@ -41,14 +37,14 @@ const options = {
     },
     tooltip: {
       y: {
-        formatter: function (val) {
+        formatter: function (val:number) {
           return val + " km/h"
         }
       }
   }
 };
 
-export default function ApexChart({ data }:Props ){
+export default function ApexChart({ data }:AsteroidsType[]){
   const [dataAsteroids, setDataAsteroids] = useState< AsteroidsType[] >([]);
 
   useEffect(() =>{

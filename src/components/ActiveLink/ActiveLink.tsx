@@ -2,9 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
 
-export default function ActiveLink({ children, href }){
+interface ActiveLinkProps{
+    href: string,
+    children: React.ReactNode
+}
+
+export default function ActiveLink({ children, href }:ActiveLinkProps){
 
     const pathname = usePathname()
 

@@ -2,7 +2,12 @@
 
 import { useState, useEffect } from "react"
 
-export default function Count({ time, children }){
+interface CountProps{
+  time: number,
+  children: React.ReactNode
+}
+
+export default function Count({ time, children }:CountProps){
     const [ count, setCount ] = useState(0);
 
     useEffect(() => {

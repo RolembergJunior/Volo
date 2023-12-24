@@ -1,6 +1,5 @@
 
 
-import { useEffect } from 'react'
 import ApexChart from "./ApexCharts";
 import { Datatype } from './types';
 import Header from '@/components/Header';
@@ -12,11 +11,13 @@ export default async function Inicio(){
     const response = await fetch('https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&end_date=2015-09-08&api_key=RarFb0q2HvVvAL41hDKoJ3t9KfKx3tiQglp4yi5O')
     const data:Datatype = await response.json();
 
-
+    console.log(data.near_earth_objects['2015-09-07'])
     return data.near_earth_objects['2015-09-07']
   }
 
  const asteroidsData = await getData()
+
+ 
   
 
   return (

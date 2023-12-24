@@ -19,7 +19,8 @@
     "nodemailer": "^6.9.6",
     "react": "latest",
     "react-apexcharts": "^1.4.1",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "resend": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "latest",

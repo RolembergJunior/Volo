@@ -1,11 +1,13 @@
-import { useEmailContext } from "@/app/context/Emails-context";
+import { EmailContext } from "@/app/context/Emails-context";
+import { useContext } from "react";
+
 
 interface EmailTemplateProps{
     firstName: string;
 }
 
 export function EmailTemplate({ firstName }:EmailTemplateProps){
-    const { allData } = useEmailContext();
+    const { allData } = useContext(EmailContext)
 
 
     return(

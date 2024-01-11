@@ -2,29 +2,23 @@
 
 import { motion } from "framer-motion";
 import ActiveLink from "../ActiveLink/ActiveLink";
-import { ChangeEvent, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import ModalContact from "./components/ModalContact";
-import { useEmailContext } from "@/app/context/Emails-context";
-import { GET } from "@/app/api/send/route";
+import { POST } from "@/app/api/send/route";
+import { EmailContext } from "@/app/context/Emails-context";
+
 
 
 
 export default function Header() {
     const [openModal , setOpenModal] = useState<Boolean>(false);
-    const { setEmail, setText, setEmailAndTextOnState } = useEmailContext();
-    
-    function handleEmail(email:ChangeEvent<HTMLInputElement>){
-        setEmail(email.target.value)
-    }
+    const { handleEmail, handleText, setEmailAndTextOnState } = useContext(EmailContext);
 
-    function handleText(text:ChangeEvent<HTMLInputElement>){
-        setText(text.target.value)
-    }
 
     function sendEmail(){
-        setEmailAndTextOnState()
+        setEmailAndTextOnState();
 
-        // GET()
+        return POST()
     }
 
     return(
